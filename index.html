@@ -674,9 +674,9 @@
         </div>
     </header>
 
-    <!-- عنصر الصوت المضاف للأنشودة -->
+    <!-- عنصر الصوت المضاف للأنشودة (باستخدام رابط صوت مباشر ومضمون) -->
     <audio id="greetingAudio" loop>
-        <source src="sound.mp3" type="audio/mpeg">
+        <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf756.mp3?filename=gentle-piano-110649.mp3" type="audio/mpeg">
         متصفحك لا يدعم تشغيل الملفات الصوتية.
     </audio>
 
@@ -799,7 +799,6 @@
 
     <!-- البرمجة التفاعلية (JavaScript) -->
     <script>
-        // تشغيل الأنشودة عبر الزر أو التفاعل
         const audio = document.getElementById('greetingAudio');
         const playBtn = document.getElementById('playAudioBtn');
         const audioIcon = document.getElementById('audioIcon');
@@ -815,24 +814,12 @@
                     audioIcon.className = "fa-solid fa-volume-high";
                     isPlaying = true;
                 }).catch(e => {
-                    alert("يرجى النقر في أي مكان بالموقع للسماح بتشغيل الصوت الترحيبي.");
+                    alert("يرجى النقر مرة أخرى أو التأكد من إلغاء كتم الصوت في هاتفك.");
                 });
             }
         });
 
-        // محاولة التشغيل التلقائي عند أول تفاعل في الصفحة
-        document.body.addEventListener('click', function initAudio() {
-            if (!isPlaying) {
-                audio.play().then(() => {
-                    audioIcon.className = "fa-solid fa-volume-high";
-                    isPlaying = true;
-                }).catch(e => {});
-            }
-            document.body.removeEventListener('click', initAudio);
-        }, { once: true });
-
-
-        // قائمة المعلمات المحدثة (بدون آمال الغبان ومنى رشيد)
+        // قائمة المعلمات المحدثة
         const teachersList = [
             "امل احمد غبان", "ابتسام محمد البلوي", "اقبال عبدالقادر الغيث",
             "امل عبدالغني الفرشوطي", "ايمان احمد رفادة", "ايمان سليمان البلوي", "داليه حسن الحويطي",
@@ -856,7 +843,6 @@
             `;
             teachersGrid.appendChild(card);
         });
-
 
         // نظام الرسائل والتفاعل
         let messages = [
