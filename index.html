@@ -56,6 +56,10 @@
     /* شريط الموسيقى والتحكم */
     .audio-control-box {
       margin-top: 15px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
     }
     #musicButton {
       background-color: var(--gold-acc);
@@ -67,10 +71,15 @@
       cursor: pointer;
       transition: 0.3s;
       box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      font-size: 15px;
     }
     #musicButton:hover {
       background-color: #fff;
       transform: translateY(-2px);
+    }
+    .audio-note {
+      font-size: 0.8rem;
+      color: #E6DCD3;
     }
 
     .container {
@@ -293,11 +302,10 @@
 </head>
 <body>
 
-  <!-- عنصر الصوت برابطك المباشر مع دعم التوافقية -->
-  <audio id="teacherSong" preload="auto" loop>
+  <!-- مشغل الصوت المخفي والمدعوم برابطك المباشر -->
+  <audio id="teacherSong" preload="auto" loop crossorigin="anonymous">
     <source src="https://pdftolink.io/file/r2_dXNlcnMvZ3Vlc3QvZGEwNWNjMWMtOTY4Ni00MWE2LWE3ODUtMmQ0N2RhNDkzMDNmLm1wNA" type="audio/mp4">
     <source src="https://pdftolink.io/file/r2_dXNlcnMvZ3Vlc3QvZGEwNWNjMWMtOTY4Ni00MWE2LWE3ODUtMmQ0N2RhNDkzMDNmLm1wNA" type="audio/mpeg">
-    متصفحك لا يدعم تشغيل الملفات الصوتية.
   </audio>
 
   <header>
@@ -306,9 +314,10 @@
     <p>5 أكتوبر .. عطاء يزهر أملاً وبناءً</p>
     
     <div class="audio-control-box">
-      <button id="musicButton" type="button">
-        تشغيل الأنشودة الترحيبية 🎵
+      <button id="musicButton" type="button" onclick="togglePlayMusic()">
+        ▶ تشغيل الأنشودة الترحيبية
       </button>
+      <span class="audio-note">اضغطي الزر لتشغيل أو إيقاف الخلفية الصوتية</span>
     </div>
   </header>
 
@@ -418,23 +427,23 @@
   </footer>
 
   <script>
-    // تفعيل وتشغيل الصوت مع معالجة سياسات المتصفح
-    const song = document.getElementById("teacherSong");
-    const musicButton = document.getElementById("musicButton");
+    // دالة تشغيل وإيقاف الصوت بفاعلية تامة
+    function togglePlayMusic() {
+      const song = document.getElementById("teacherSong");
+      const musicButton = document.getElementById("musicButton");
 
-    musicButton.addEventListener("click", () => {
       if (song.paused) {
         song.play().then(() => {
-          musicButton.textContent = "إيقاف الأنشودة 🔇";
+          musicButton.textContent = "⏸ إيقاف الأنشودة";
         }).catch(error => {
-          console.log("تعذر التشغيل المباشر:", error);
-          alert("يرجى النقر مرة أخرى لتشغيل الصوت بشكل كامل.");
+          console.log("خطأ في التشغيل:", error);
+          alert("الرجاء النقر مرة أخرى لس السماح بتشغيل الصوت.");
         });
       } else {
         song.pause();
-        musicButton.textContent = "تشغيل الأنشودة الترحيبية 🎵";
+        musicButton.textContent = "▶ تشغيل الأنشودة الترحيبية";
       }
-    });
+    }
 
     // قاعدة بيانات محلية (تخزين مؤقت)
     let messages = JSON.parse(localStorage.getItem('teacherMessages')) || [
