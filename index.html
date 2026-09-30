@@ -3,160 +3,457 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>عالمي للمعلم - الابتدائية والمتوسطة الأولى بالوجه</title>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <title>يوم المعلم | الابتدائية والمتوسطة الأولى بالوجه</title>
+    <!-- خط عربي أنيق -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary: #800020; /* لون عنابي ملكي فاخر */
-            --primary-light: #a31c3c;
-            --accent: #d4af37; /* ذهبي */
-            --bg-cream: #faf7f2;
-            --bg-soft: #f4ece1;
-            --text-dark: #2c221e;
-            --text-muted: #6b5b53;
+            --primary-pink: #d8a47f;
+            --soft-lavender: #f4e8ec;
+            --rose-gold: #c58973;
+            --text-dark: #4a3b32;
+            --bg-color: #fdfbfb;
             --white: #ffffff;
-            --shadow: 0 10px 30px rgba(128, 0, 32, 0.08);
         }
-
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Tajawal', sans-serif;
+            font-family: 'Cairo', sans-serif;
         }
-
         body {
-            background-color: var(--bg-cream);
+            background-color: var(--bg-color);
             color: var(--text-dark);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
-            padding: 20px;
+            line-height: 1.6;
         }
-
-        .container {
-            max-width: 800px;
-            width: 100%;
-            background: var(--white);
-            border-radius: 20px;
-            box-shadow: var(--shadow);
-            padding: 30px;
+        header {
+            background: linear-gradient(135deg, #f7d6e0, #e8c5c8);
+            padding: 40px 20px;
             text-align: center;
-            margin-top: 20px;
-            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-bottom: 4px solid var(--rose-gold);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
         }
-
-        h1 {
-            color: var(--primary);
-            font-size: 2rem;
+        header h1 {
+            font-size: 2.2rem;
+            color: var(--text-dark);
             margin-bottom: 10px;
-            font-weight: 900;
         }
-
-        p.subtitle {
-            color: var(--text-muted);
+        header p {
             font-size: 1.1rem;
-            margin-bottom: 25px;
+            color: #6b5b52;
         }
-
-        /* تصميم مشغل الصوت العصري */
-        .audio-player-box {
-            background: var(--bg-soft);
+        .meta-info {
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--rose-gold);
+            font-size: 0.95rem;
+        }
+        .container {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+        .card {
+            background: var(--white);
             border-radius: 15px;
-            padding: 20px;
-            margin: 20px 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 15px;
-            border: 1px dashed var(--accent);
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.03);
+            border: 1px solid #f0e6e6;
         }
-
-        .audio-btn {
-            background: var(--primary);
-            color: var(--white);
+        h2 {
+            color: var(--rose-gold);
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+            border-bottom: 2px solid var(--soft-lavender);
+            padding-bottom: 8px;
+        }
+        .retired-corner {
+            background: linear-gradient(to right, #fff5f7, #fdf2f4);
+            border-right: 5px solid var(--rose-gold);
+        }
+        .teachers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 12px;
+            margin-top: 15px;
+        }
+        .teacher-badge {
+            background: var(--soft-lavender);
+            padding: 10px 15px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+        input, textarea, select {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+        button {
+            background: var(--rose-gold);
+            color: white;
             border: none;
-            padding: 12px 30px;
-            font-size: 1.1rem;
-            font-weight: 700;
+            padding: 12px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+        button:hover {
+            background: #b07460;
+        }
+        .message-item {
+            background: #faf7f7;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            position: relative;
+            border-left: 4px solid var(--rose-gold);
+        }
+        .message-item img, .message-item video {
+            max-width: 100%;
+            border-radius: 8px;
+            margin-top: 10px;
+            max-height: 300px;
+            display: block;
+        }
+        .message-actions {
+            margin-top: 10px;
+            display: flex;
+            gap: 10px;
+        }
+        .btn-sm {
+            padding: 5px 10px;
+            font-size: 0.8rem;
+        }
+        .btn-danger {
+            background: #d9534f;
+        }
+        .btn-danger:hover {
+            background: #c9302c;
+        }
+        .audio-float {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: var(--rose-gold);
+            color: white;
+            padding: 12px 18px;
             border-radius: 50px;
             cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            z-index: 1000;
             display: flex;
             align-items: center;
-            gap: 10px;
-            box-shadow: 0 4px 15px rgba(128, 0, 32, 0.2);
-            transition: all 0.3s ease;
-        }
-
-        .audio-btn:hover {
-            background: var(--primary-light);
-            transform: translateY(-2px);
-        }
-
-        .audio-note {
+            gap: 8px;
             font-size: 0.9rem;
-            color: var(--text-muted);
         }
-
-        footer {
-            margin-top: 30px;
-            font-size: 0.9rem;
-            color: var(--text-muted);
+        #admin-panel {
+            display: none;
+            background: #fff8f8;
+            border: 2px dashed var(--rose-gold);
+        }
+        .admin-trigger {
+            text-align: center;
+            margin: 40px 0;
+        }
+        .admin-trigger a {
+            color: #888;
+            text-decoration: none;
+            font-size: 0.85rem;
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <h1>الابتدائية والمتوسطة الأولى بالوجه</h1>
-        <p class="subtitle">من شغاف القلب.. نشكركم معلمينا فأنتِ خير ما فيها</p>
+    <!-- مشغل الصوت التلقائي -->
+    <audio id="bg-audio" loop>
+        <source src="https://pdftolink.io/file/r2_dXNlcnMvZ3Vlc3QvZGEwNWNjMWMtOTY4Ni00MWE2LWE3ODUtMmQ0N2RhNDkzMDNmLm1wNA" type="audio/mp4">
+    </audio>
 
-        <!-- صندوق الصوت التفاعلي المباشر -->
-        <div class="audio-player-box">
-            <p class="audio-note"><i class="fa-solid fa-volume-high"></i> اضغطي على زر التشغيل للاستماع للأنشوطة الترحيبية:</p>
-            <button class="audio-btn" id="playAudioBtn" onclick="toggleAudio()">
-                <i class="fa-solid fa-play" id="playIcon"></i> <span id="playText">تشغيل الصوت</span>
-            </button>
-            <!-- رابط الملف الصوتي المباشر الذي أرسلتيه -->
-            <audio id="schoolAudio" preload="auto">
-                <source src="https://pdftolink.io/file/r2_dXNlcnMvZ3Vlc3QvZGEwNWNjMWMtOTY4Ni00MWE2LWE3ODUtMmQ0N2RhNDkzMDNmLm1wNA" type="audio/mp4">
-                متصفحك لا يدعم تشغيل الصوت.
-            </audio>
-        </div>
+    <div class="audio-float" onclick="toggleAudio()">
+        <i id="audio-icon" class="fa-solid fa-volume-high"></i>
+        <span id="audio-text">إيقاف/تشغيل الأنشودة</span>
     </div>
 
-    <footer>
-        الإدارة العامة للتعليم بمنطقة تبوك &copy; 2026
-    </footer>
+    <header>
+        <h1>يوم المعلم العالمي 5 أكتوبر</h1>
+        <p>احتفاءً بعطاء نبراس الإبداع والتربية</p>
+        <div class="meta-info">
+            الابتدائية والمتوسطة الأولى بالوجه<br>
+            مديرة المدرسة: ميسه ابودريهم | إعداد المساعد الإداري: مرضية رفادة
+        </div>
+    </header>
+
+    <div class="container">
+
+        <!-- زاوية المعلمة المتقاعدة -->
+        <div class="card retired-corner">
+            <h2><i class="fa-solid fa-award"></i> زاوية الوفاء (لمعلمتنا المتقاعدة)</h2>
+            <p>مساحة خاصة لتقديم رسائل الشكر والتقدير لمن أفنين زهرة عمرهن في خدمة التعليم بالمدرسة.</p>
+            <div style="margin-top: 15px;">
+                <input type="text" id="retiredSender" placeholder="اسمك (طالبة / زميلة)">
+                <textarea id="retiredMsg" placeholder="اكتبي رسالة وفاء وتقدير تصل لها مباشرة..."></textarea>
+                <button onclick="sendRetiredMessage()">إرسال رسالة وفاء</button>
+            </div>
+            <div id="retiredMessagesList" style="margin-top: 15px;"></div>
+        </div>
+
+        <!-- أسماء معلمات المدرسة -->
+        <div class="card">
+            <h2><i class="fa-solid fa-chalkboard-user"></i> معلمات المدرسة المتميزات</h2>
+            <p>نخبة العطاء والتميز في الابتدائية والمتوسطة الأولى:</p>
+            <div class="teachers-grid">
+                <div class="teacher-badge">امل احمد غبان</div>
+                <div class="teacher-badge">ابتسام محمد البلوي</div>
+                <div class="teacher-badge">اقبال عبدالقادر الغيث</div>
+                <div class="teacher-badge">امل عبدالغني الفرشوطي</div>
+                <div class="teacher-badge">ايمان احمد رفادة</div>
+                <div class="teacher-badge">ايمان سليمان البلوي</div>
+                <div class="teacher-badge">داليه حسن الحويطي</div>
+                <div class="teacher-badge">رخية احمد رفادة</div>
+                <div class="teacher-badge">رشا حمدي الحجيري</div>
+                <div class="teacher-badge">سناء سليمان البلوي</div>
+                <div class="teacher-badge">صباح حسن البلوي</div>
+                <div class="teacher-badge">عزة محمد البلوي</div>
+                <div class="teacher-badge">عيده عبدالله فتوح</div>
+                <div class="teacher-badge">ليلى صبري ابوسالم</div>
+                <div class="teacher-badge">محاسن احمد شحاته</div>
+                <div class="teacher-badge">منى احمد غبان</div>
+                <div class="teacher-badge">منيرة صوكان الحربي</div>
+                <div class="teacher-badge">مها محمد الوابصي</div>
+                <div class="teacher-badge">نوره ضبيان البلوي</div>
+                <div class="teacher-badge">هناء حامد الجهني</div>
+                <div class="teacher-badge">وفاء محمد البلوي</div>
+                <div class="teacher-badge">ولاء عبدالعزيز الشريف</div>
+                <div class="teacher-badge">يسرى سعد الحويطي</div>
+            </div>
+        </div>
+
+        <!-- حائط لوحة التبريكات والمشاركات المتعددة (كتابة، صورة، فيديو) -->
+        <div class="card">
+            <h2><i class="fa-solid fa-comments"></i> لوحة مشاعر الشكر والامتنان والمشاركات</h2>
+            <p>أتركي كلمتك أو شاركينا صورة أو مقطع فيديو احتفاءً بيوم المعلم:</p>
+            
+            <input type="text" id="msgAuthor" placeholder="الاسم (اختياري)">
+            <textarea id="msgContent" placeholder="اكتبي كلمتك الطيبة هنا..."></textarea>
+            
+            <label style="font-size: 0.9rem; font-weight: 600; color: var(--rose-gold); display: block; margin-bottom: 5px;">
+                <i class="fa-solid fa-photo-film"></i> إرفاق صورة أو مقطع فيديو (اختياري):
+            </label>
+            <input type="file" id="mediaInput" accept="image/*,video/*">
+
+            <button onclick="postMessage()">نشر المشاركة</button>
+
+            <div id="messagesWall" style="margin-top: 20px;"></div>
+        </div>
+
+        <!-- لوحة التحكم الإدارية الخاصة (محمية) -->
+        <div class="admin-trigger">
+            <a href="javascript:void(0)" onclick="openAdminPanel()"><i class="fa-solid fa-lock"></i> دخول لوحة التحكم الإدارية</a>
+        </div>
+
+        <div class="card" id="admin-panel">
+            <h2><i class="fa-solid fa-user-shield"></i> لوحة التحكم الخاصة بالمساعد الإداري</h2>
+            <p>خاصة بكِ لحذف أي محتوى غير مناسب (الرمز المخفي مطلوب):</p>
+            <input type="password" id="adminPassInput" placeholder="أدخل رمز الدخول السري">
+            <button onclick="verifyAdmin()">فتح اللوحة</button>
+            <div id="adminContent" style="display:none; margin-top: 15px;">
+                <p style="color: green; font-weight: bold;">تم التحقق بنجاح. يمكنك الآن حذف أي مشاركة مخالفة من الحائط أدناه مباشرة.</p>
+                <div id="adminMessagesList"></div>
+            </div>
+        </div>
+
+    </div>
 
     <script>
-        const audio = document.getElementById('schoolAudio');
-        const playBtn = document.getElementById('playAudioBtn');
-        const playIcon = document.getElementById('playIcon');
-        const playText = document.getElementById('playText');
+        window.addEventListener('DOMContentLoaded', () => {
+            const audio = document.getElementById('bg-audio');
+            audio.play().catch(() => {
+                document.body.addEventListener('click', () => {
+                    audio.play();
+                }, { once: true });
+            });
+        });
 
         function toggleAudio() {
+            const audio = document.getElementById('bg-audio');
+            const icon = document.getElementById('audio-icon');
             if (audio.paused) {
-                audio.play().then(() => {
-                    playIcon.classList.remove('fa-play');
-                    playIcon.classList.add('fa-pause');
-                    playText.innerText = 'إيقاف مؤقت';
-                }).catch(error => {
-                    console.log("خطأ في التشغيل:", error);
-                    alert("يرجى النقر مرة أخرى للسماح بتشغيل الصوت.");
-                });
+                audio.play();
+                icon.className = "fa-solid fa-volume-high";
             } else {
                 audio.pause();
-                playIcon.classList.remove('fa-pause');
-                playIcon.classList.add('fa-play');
-                playText.innerText = 'تشغيل الصوت';
+                icon.className = "fa-solid fa-volume-xmark";
             }
         }
-    </script>
 
+        let messages = JSON.parse(localStorage.getItem('teacher_messages')) || [];
+        let retiredMsgs = JSON.parse(localStorage.getItem('retired_messages')) || [];
+
+        function renderMessages() {
+            const wall = document.getElementById('messagesWall');
+            wall.innerHTML = '';
+            messages.forEach((msg, index) => {
+                let mediaHtml = '';
+                if (msg.mediaUrl) {
+                    if (msg.mediaType && msg.mediaType.startsWith('video')) {
+                        mediaHtml = `<video controls src="${msg.mediaUrl}"></video>`;
+                    } else {
+                        mediaHtml = `<img src="${msg.mediaUrl}" alt="مشاركة مرفقة">`;
+                    }
+                }
+
+                wall.innerHTML += `
+                    <div class="message-item">
+                        <strong>${msg.author || 'زائر'}</strong>
+                        <p>${msg.content}</p>
+                        ${mediaHtml}
+                        <div class="message-actions">
+                            <button class="btn-sm" onclick="likeMsg(${index})"><i class="fa-solid fa-heart"></i> (${msg.likes || 0})</button>
+                            <button class="btn-sm" onclick="editMsg(${index})">تعديل</button>
+                            <button class="btn-sm btn-danger" onclick="deleteMsg(${index})">حذف</button>
+                        </div>
+                    </div>
+                `;
+            });
+            localStorage.setItem('teacher_messages', JSON.stringify(messages));
+            if(document.getElementById('adminContent').style.display === 'block') {
+                renderAdminList();
+            }
+        }
+
+        function postMessage() {
+            const author = document.getElementById('msgAuthor').value;
+            const content = document.getElementById('msgContent').value;
+            const fileInput = document.getElementById('mediaInput');
+
+            if(!content.trim() && fileInput.files.length === 0) {
+                alert('الرجاء كتابة نص أو إرفاق صورة/فيديو قبلคالنشر');
+                return;
+            }
+
+            if(fileInput.files.length > 0) {
+                const file = fileInput.files[0];
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    messages.push({ 
+                        author, 
+                        content, 
+                        mediaUrl: e.target.result, 
+                        mediaType: file.type, 
+                        likes: 0 
+                    });
+                    resetForm();
+                    renderMessages();
+                };
+                reader.readAsDataURL(file);
+            } else {
+                messages.push({ author, content, mediaUrl: null, mediaType: null, likes: 0 });
+                resetForm();
+                renderMessages();
+            }
+        }
+
+        function resetForm() {
+            document.getElementById('msgAuthor').value = '';
+            document.getElementById('msgContent').value = '';
+            document.getElementById('mediaInput').value = '';
+        }
+
+        function deleteMsg(index) {
+            if(confirm('هل أنتِ متأكدة من حذف هذه المشاركة؟')) {
+                messages.splice(index, 1);
+                renderMessages();
+            }
+        }
+
+        function editMsg(index) {
+            const newContent = prompt('تعديل نص المشاركة:', messages[index].content);
+            if(newContent !== null) {
+                messages[index].content = newContent;
+                renderMessages();
+            }
+        }
+
+        function likeMsg(index) {
+            messages[index].likes = (messages[index].likes || 0) + 1;
+            renderMessages();
+        }
+
+        // زاوية المتقاعدات
+        function sendRetiredMessage() {
+            const sender = document.getElementById('retiredSender').value;
+            const content = document.getElementById('retiredMsg').value;
+            if(!content.trim()) {
+                alert('الرجاء كتابة الرسالة');
+                return;
+            }
+            retiredMsgs.push({ sender, content });
+            document.getElementById('retiredSender').value = '';
+            document.getElementById('retiredMsg').value = '';
+            renderRetiredMsgs();
+        }
+
+        function renderRetiredMsgs() {
+            const list = document.getElementById('retiredMessagesList');
+            list.innerHTML = '';
+            retiredMsgs.forEach((item, idx) => {
+                list.innerHTML += `
+                    <div style="background:#fff; padding:10px; border-radius:8px; margin-top:8px; border:1px solid #eee;">
+                        <strong>من: ${item.sender || 'محبوبة'}</strong>
+                        <p>${item.content}</p>
+                        <button class="btn-sm btn-danger" onclick="deleteRetired(${idx})" style="margin-top:5px;">حذف</button>
+                    </div>
+                `;
+            });
+            localStorage.setItem('retired_messages', JSON.stringify(retiredMsgs));
+        }
+
+        function deleteRetired(idx) {
+            retiredMsgs.splice(idx, 1);
+            renderRetiredMsgs();
+        }
+
+        // لوحة التحكم الإدارية
+        function openAdminPanel() {
+            document.getElementById('admin-panel').style.display = 'block';
+        }
+
+        function verifyAdmin() {
+            const pass = document.getElementById('adminPassInput').value;
+            if(pass === 'marmare2552') {
+                document.getElementById('adminContent').style.display = 'block';
+                renderAdminList();
+            } else {
+                alert('رمز الدخول غير صحيح!');
+            }
+        }
+
+        function renderAdminList() {
+            const adminList = document.getElementById('adminMessagesList');
+            adminList.innerHTML = '<h3>جميع المشاركات (تحكم المشرف):</h3>';
+            messages.forEach((msg, index) => {
+                adminList.innerHTML += `
+                    <div class="message-item" style="background:#fff;">
+                        <strong>${msg.author || 'زائر'}</strong>
+                        <p>${msg.content}</p>
+                        <button class="btn-sm btn-danger" onclick="deleteMsg(${index})">حذف نهائي كمسؤولة</button>
+                    </div>
+                `;
+            });
+        }
+
+        renderMessages();
+        renderRetiredMsgs();
+    </script>
 </body>
 </html>
-
