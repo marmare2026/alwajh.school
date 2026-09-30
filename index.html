@@ -139,13 +139,13 @@
       background-color: #4A1E28;
     }
 
-    /* زاوية المعلمة المتقاعدة */
+    /* زاوية المعلمة المتقاعدة في الأسفل */
     .retired-corner {
       background: linear-gradient(145deg, #F9F3EE, #F2E6DD);
       border: 2px dashed var(--gold-acc);
       border-radius: 12px;
       padding: 25px;
-      margin-bottom: حقيقية 30px;
+      margin-top: 40px;
       margin-bottom: 30px;
     }
 
@@ -203,7 +203,7 @@
       white-space: pre-wrap;
     }
 
-    .msg-card media, .msg-card img, .msg-card video, .msg-card audio {
+    .msg-card img, .msg-card video, .msg-card audio {
       max-width: 100%;
       border-radius: 6px;
       margin-top: 10px;
@@ -293,8 +293,9 @@
 </head>
 <body>
 
-  <!-- عنصر الصوت وتشغيله -->
-  <audio id="teacherSong" loop>
+  <!-- عنصر الصوت برابطك المباشر مع دعم التوافقية -->
+  <audio id="teacherSong" preload="auto" loop>
+    <source src="https://pdftolink.io/file/r2_dXNlcnMvZ3Vlc3QvZGEwNWNjMWMtOTY4Ni00MWE2LWE3ODUtMmQ0N2RhNDkzMDNmLm1wNA" type="audio/mp4">
     <source src="https://pdftolink.io/file/r2_dXNlcnMvZ3Vlc3QvZGEwNWNjMWMtOTY4Ni00MWE2LWE3ODUtMmQ0N2RhNDkzMDNmLm1wNA" type="audio/mpeg">
     متصفحك لا يدعم تشغيل الملفات الصوتية.
   </audio>
@@ -317,23 +318,6 @@
     <div class="admin-login-bar">
       <button class="admin-trigger" onclick="toggleAdminMode()">🔐 لوحة تحكم المشرفة</button>
     </div>
-
-    <!-- زاوية المعلمة المتقاعدة -->
-    <section class="retired-corner">
-      <h3>✨ زاوية الوفاء للمعلمات المتقاعدات</h3>
-      <p style="margin-bottom: 15px; font-size: 0.95rem;">عظيم الشكر والامتنان لمن أفنين زهرة أعمارهن في أروقة العطاء والتعليم... اتركِي رسالة تقدير وعرفان هنا لتصل إلى قلوبهن الطاهرة.</p>
-      <div class="form-group">
-        <input type="text" id="retiredSender" class="form-control" placeholder="اسم المرسلة (طالبة / زميلة)">
-      </div>
-      <div class="form-group">
-        <textarea id="retiredMsg" class="form-control" placeholder="اكتبي رسالة حب وتقدير لمعلمتنا المتقاعدة..."></textarea>
-      </div>
-      <button class="btn-submit" onclick="addRetiredMessage()">إرسال إلى زاوية المتقاعدات</button>
-      
-      <div id="retiredWall" style="margin-top: 20px;" class="messages-grid">
-        <!-- تظهر رسائل المتقاعدات هنا -->
-      </div>
-    </section>
 
     <!-- نموذج إضافة رسالة أو مشاركة لمعلمة -->
     <section class="card-section">
@@ -381,7 +365,7 @@
         </div>
 
         <div class="form-group">
-          <label>إرفاق ملف (صورة عالية الجودة أو فيديو مدته تزيد عن دقيقة - حتى 50 ميجابايت):</label>
+          <label>إرفاق ملف (صورة عالية الجودة أو فيديو مدته تزيد عن دقيقة):</label>
           <input type="file" id="mediaFile" class="form-control" accept="image/*,video/*,audio/*">
           <small style="color: #777; display: block; margin-top: 5px;">يدعم الموقع المرفقات الكبيرة (صور وفيديوهات واضحة).</small>
         </div>
@@ -397,6 +381,23 @@
       </div>
       <div id="messagesWall" class="messages-grid">
         <!-- يتم تعبئة الرسائل تلقائياً هنا -->
+      </div>
+    </section>
+
+    <!-- زاوية المعلمة المتقاعدة (في أسفل الصفحة) -->
+    <section class="retired-corner">
+      <h3>✨ زاوية الوفاء للمعلمات المتقاعدات</h3>
+      <p style="margin-bottom: 15px; font-size: 0.95rem;">عظيم الشكر والامتنان لمن أفنين زهرة أعمارهن في أروقة العطاء والتعليم... اتركِي رسالة تقدير وعرفان هنا لتصل إلى قلوبهن الطاهرة.</p>
+      <div class="form-group">
+        <input type="text" id="retiredSender" class="form-control" placeholder="اسم المرسلة (طالبة / زميلة)">
+      </div>
+      <div class="form-group">
+        <textarea id="retiredMsg" class="form-control" placeholder="اكتبي رسالة حب وتقدير لمعلمتنا المتقاعدة..."></textarea>
+      </div>
+      <button class="btn-submit" onclick="addRetiredMessage()">إرسال إلى زاوية المتقاعدات</button>
+      
+      <div id="retiredWall" style="margin-top: 20px;" class="messages-grid">
+        <!-- تظهر رسائل المتقاعدات هنا -->
       </div>
     </section>
 
@@ -417,23 +418,25 @@
   </footer>
 
   <script>
-    // تفعيل وتشغيل الصوت
+    // تفعيل وتشغيل الصوت مع معالجة سياسات المتصفح
     const song = document.getElementById("teacherSong");
     const musicButton = document.getElementById("musicButton");
 
     musicButton.addEventListener("click", () => {
       if (song.paused) {
-        song.play().catch(error => {
-          console.log("تعذر التشغيل التلقائي المباشر:", error);
+        song.play().then(() => {
+          musicButton.textContent = "إيقاف الأنشودة 🔇";
+        }).catch(error => {
+          console.log("تعذر التشغيل المباشر:", error);
+          alert("يرجى النقر مرة أخرى لتشغيل الصوت بشكل كامل.");
         });
-        musicButton.textContent = "إيقاف الأنشودة 🔇";
       } else {
         song.pause();
         musicButton.textContent = "تشغيل الأنشودة الترحيبية 🎵";
       }
     });
 
-    // قاعدة بيانات محلية وهمية (تخزين مؤقت بالموقع)
+    // قاعدة بيانات محلية (تخزين مؤقت)
     let messages = JSON.parse(localStorage.getItem('teacherMessages')) || [
       {
         id: 1,
@@ -485,7 +488,6 @@
 
       if (fileInput.files && fileInput.files[0]) {
         const file = fileInput.files[0];
-        // محاكاة قراءة الملف المرفق الكبير
         mediaUrl = URL.createObjectURL(file);
         if (file.type.startsWith('image')) {
           mediaType = 'image';
@@ -599,7 +601,6 @@
       });
     }
 
-    // التهيئة الأولية عند فتح الصفحة
     renderMessages();
     renderRetiredMessages();
   </script>
